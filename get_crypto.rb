@@ -31,6 +31,7 @@ end
 
 #--------------------------
 #démarage du programme
+loop{
 puts "combien de crypto voulez-vous afficher?"
  nb = gets.chomp.to_i  #Permet de transformer la string en nombre
 
@@ -40,3 +41,6 @@ puts "combien de crypto voulez-vous afficher?"
 
 puts h
 puts "je t'en ai mis une en plus, c'est cadeau!"
+sleep(3600) # affiche les crypto demandé toute les heures
+puts "Verifions l'evolution du marché"
+}
