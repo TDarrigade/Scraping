@@ -8,14 +8,15 @@ def get_btc_course()
 	
 	prices = []
 
-	page.xpath('//a[@class="price"]').each do |price|
-		prices << price.text.gsub(' ','')
+	page.xpath('//a[@class="currency-name-container"]').each do |price|
+		prices << price.text #.gsub(' ','')
 
-		prices[0].gsub("\n","")
+		#prices[0].gsub("\n","")
 	end
 	 puts "1 bitcoin vaut : #{prices[0..10]}"
-	 sleep(5)
+	 #sleep(5)
 end
 
 
-loop { get_btc_course }
+#loop { get_btc_course }
+get_btc_course
