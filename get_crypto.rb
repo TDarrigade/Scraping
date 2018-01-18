@@ -11,10 +11,7 @@ def get_crypto_price(x)
 
 	page.xpath('//a[@class="price"]').each do |price|
 		prices << price.text.gsub(' ','')
-
-		
 	end
-	 
 	return prices[0..x] #attrape 100 prix
 end
 
@@ -37,6 +34,9 @@ end
 puts "combien de crypto voulez-vous afficher?"
  nb = gets.chomp.to_i  #Permet de transformer la string en nombre
 
+#nb -= 1 pour afficher le bon nombre de resultat mais y'a plus de vanne
+
 	h = Hash[get_crypto_name(nb).zip get_crypto_price(nb)] #reuni les prix et les noms
 
 puts h
+puts "je t'en ai mis une en plus, c'est cadeau!"
