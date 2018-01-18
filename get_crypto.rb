@@ -2,7 +2,9 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-def get_crypto_price()
+#--------------------------
+#Methode pour reccupérer les prix des crypto
+def get_crypto_price(x) 
 	page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/"))
 	
 	prices = []
@@ -10,30 +12,31 @@ def get_crypto_price()
 	page.xpath('//a[@class="price"]').each do |price|
 		prices << price.text.gsub(' ','')
 
-		#prices[0].gsub("\n","")
+		
 	end
-	 #puts "1 bitcoin vaut : #{prices[0..10]}"
-	 #sleep(5)
-	 return prices[0..100]
+	 
+	return prices[0..x] #attrape 100 prix
 end
 
-
-def get_crypto_name()
+#--------------------------
+#Methode pour reccupérer les noms des crypto
+def get_crypto_name(x)
 	page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/"))
 	
 	names = []
 
 	page.xpath('//a[@class="currency-name-container"]').each do |name|
-		names << name.text #.gsub(' ','')
-
-		#prices[0].gsub("\n","")
+		names << name.text	
 	end
-	 #puts "Les crypto s'appelle : #{prices[0..10]}"
-	 
-		
-	 return names[0..100]
+	return names[0..x] #attrape 100 noms
+	
 end
 
-h = Hash[get_crypto_name.zip get_crypto_price]
+#--------------------------
+#démarage du programme
+puts "combien de crypto voulez-vous afficher?"
+ nb = gets.chomp.to_i  #Permet de transformer la string en nombre
 
-puts h 
+	h = Hash[get_crypto_name(nb).zip get_crypto_price(nb)] #reuni les prix et les noms
+
+puts h
