@@ -14,25 +14,26 @@ def get_crypto_price()
 	end
 	 #puts "1 bitcoin vaut : #{prices[0..10]}"
 	 #sleep(5)
-	 
+	 return prices[0..100]
 end
 
 
 def get_crypto_name()
 	page = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/"))
 	
-	prices = []
+	names = []
 
-	page.xpath('//a[@class="currency-name-container"]').each do |price|
-		prices << price.text #.gsub(' ','')
+	page.xpath('//a[@class="currency-name-container"]').each do |name|
+		names << name.text #.gsub(' ','')
 
 		#prices[0].gsub("\n","")
 	end
 	 #puts "Les crypto s'appelle : #{prices[0..10]}"
-	 #sleep(5)
+	 
+		
+	 return names[0..100]
 end
 
+h = Hash[get_crypto_name.zip get_crypto_price]
 
-#loop { get_btc_course }
-#get_btc_course
-
+puts h 
