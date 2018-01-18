@@ -12,7 +12,7 @@ def get_crypto_price(x)
 	page.xpath('//a[@class="price"]').each do |price|
 		prices << price.text.gsub(' ','')
 	end
-	return prices[0..x] #attrape 100 prix
+	return prices[0..x] #attrape x prix
 end
 
 #--------------------------
@@ -25,7 +25,7 @@ def get_crypto_name(x)
 	page.xpath('//a[@class="currency-name-container"]').each do |name|
 		names << name.text	
 	end
-	return names[0..x] #attrape 100 noms
+	return names[0..x] #attrape x noms
 	
 end
 
